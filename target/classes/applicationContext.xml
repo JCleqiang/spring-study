@@ -7,9 +7,17 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="userDao" class="com.leqiang222.spring_study.demo1.UserDAOImpl">
+    <!--
+        scope，	singleton		：默认的，Spring会采用单例模式创建这个对象。
+               	prototype	：多例模式。（Struts2和Spring整合一定会用到）
+    -->
+    <bean id="userDao" class="com.leqiang222.spring_study.demo1.UserDAOImpl" scope="prototype" >
         <property name="count" value="2"></property>
     </bean>
 
+    <!--<bean id="bean1" class="com.leqiang222.spring_study.demo2.Bean1">-->
+    <!--</bean>-->
+    <bean id="bean1" class="com.leqiang222.spring_study.demo2.Bean1" factory-method="createBean1">
+    </bean>
 
 </beans>

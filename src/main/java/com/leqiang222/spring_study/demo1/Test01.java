@@ -14,6 +14,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Test01 {
     @Test
     public void test1() {
+        // 	ApplicationContext有两个实现类
+            // 	ClassPathXmlApplicationContext	：加载类路径下的配置文件
+            // 	FileSystemXmlApplicationContext	：加载文件系统下的配置文件
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserDAO userDAO = (UserDAO) applicationContext.getBean("userDao");
 

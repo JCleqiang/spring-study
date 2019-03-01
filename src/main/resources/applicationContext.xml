@@ -7,9 +7,85 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="userDao" class="com.leqiang222.spring_study.demo1.UserDAOImpl">
+    <!--
+        scope，	singleton		：默认的，Spring会采用单例模式创建这个对象。
+               	prototype	：多例模式。（Struts2和Spring整合一定会用到）
+    -->
+    <bean id="userDao" class="com.leqiang222.spring_study.demo1.UserDAOImpl" scope="prototype" >
         <property name="count" value="2"></property>
     </bean>
 
+    <!--<bean id="bean1" class="com.leqiang222.spring_study.demo2.Bean1">-->
+    <!--</bean>-->
 
+    <!--<bean id="bean1" class="com.leqiang222.spring_study.demo2.Bean1" factory-method="createBean1">-->
+    <!--</bean>-->
+
+    <!--工厂实例-->
+    <!--<bean id="bean1Factory" class=""></bean>-->
+    <!--对象实例-->
+    <!--<bean id="bean1Factory" class=""></bean>-->
+
+    <!-- Spring的属性注入的方式================== -->
+    <!-- 构造方法的方式 -->
+    <bean id="car" class="com.itheima.spring.demo4.Car">
+        <constructor-arg name="name" value="宝马"/>
+        <constructor-arg name="price" value="800000"/>
+    </bean>
+
+    <!-- set方法的方式 -->
+    <bean id="car2" class="com.itheima.spring.demo4.Car2">
+            <property name="name" value="奔驰"/>
+            <property name="price" value="1000000"/>
+    </bean>
+
+    <!-- set方法注入对象类型的属性 -->
+    <bean id="employee" class="com.itheima.spring.demo4.Employee">
+        value:设置普通类型的值，ref:设置其他的类的id或name
+        <property name="name" value="涛哥"/>
+        <property name="car2" ref="car2"/>
+    </bean>
+
+
+
+    <!-- Spring的集合属性的注入============================ -->
+    <!-- 注入数组类型 -->
+    <bean id="collectionBean" class="com.itheima.spring.demo5.CollectionBean">
+        <!-- 数组类型 -->
+        <property name="arrs">
+            <list>
+                <value>王东</value>
+                <value>赵洪</value>
+                <value>李冠希</value>
+            </list>
+        </property>
+
+        <!-- 注入list集合 -->
+        <property name="list">
+            <list>
+                <value>李兵</value>
+                <value>赵如何</value>
+                <value>邓凤</value>
+            </list>
+        </property>
+
+        <!-- 注入set集合 -->
+        <property name="set">
+            <set>
+                <value>aaa</value>
+                <value>bbb</value>
+                <value>ccc</value>
+            </set>
+        </property>
+
+        <!-- 注入Map集合 -->
+        <property name="map">
+
+            <map>
+                <entry key="aaa" value="111"/>
+                <entry key="bbb" value="222"/>
+                <entry key="ccc" value="333"/>
+            </map>
+        </property>
+    </bean>
 </beans>
